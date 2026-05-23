@@ -8,100 +8,100 @@ const { useState, useEffect, useRef, useMemo, useCallback } = React;
 
 const SITE = {
   name: "Duc Tran",
-  role: "Data Journalist",
-  location: "Brooklyn, NY",
-  tz: "America/New_York",
-  tzOffset: -4,
-  email: "duc@ductran.work",
+  role: "Data Journalism Lead",
+  location: "Ho Chi Minh City, Vietnam",
+  tz: "Asia/Ho_Chi_Minh",
+  tzOffset: +7,
+  email: "ttvietduc@gmail.com",
   social: [
-    { k: "github",     v: "ductran", href: "#" },
-    { k: "x",          v: "@ductran", href: "#" },
-    { k: "are.na",     v: "duc-tran", href: "#" },
-    { k: "signal",     v: "available on request", href: "#" },
+    { k: "linkedin", v: "ttvietduc",        href: "https://www.linkedin.com/in/ttvietduc" },
+    { k: "github",   v: "ductran2918",       href: "https://github.com/ductran2918" },
+    { k: "work",     v: "duc@techinasia.com", href: "mailto:duc@techinasia.com" },
+    { k: "signal",   v: "available on request", href: "#" },
   ],
   about: [
-    "I report on systems — housing, climate, money — with code and a notebook.",
-    "Most days I'm scraping, modeling, or trying to convince a designer that a small multiple is fine, actually.",
-    "Before journalism I worked in product. The pivot stuck.",
+    "I report on the Asian tech ecosystem — startups, venture capital, and the markets shaping them — with data at the center of every story.",
+    "My path to data journalism ran through marketing, social listening, and three Vietnamese newsrooms: VNG's Zing News, Dân Trí, and VnExpress, where I helped pioneer data-driven storytelling in Vietnamese media.",
+    "Now I'm Data Journalism Lead at Tech in Asia, building analyses that founders and VCs rely on. I also serve as President of the ABG Alumni Association (2025–26).",
   ],
 };
 
 const WORK = [
-  { from: "2024", to: "present", role: "Senior Data Reporter", org: "The Atlas",    note: "Investigations desk · longform + interactives" },
-  { from: "2022", to: "2024",    role: "Data Journalist",      org: "Bloomberg",    note: "Markets data team · daily explainers" },
-  { from: "2021", to: "2022",    role: "Newsroom Fellow",      org: "ProPublica",   note: "Local Reporting Network" },
-  { from: "2019", to: "2021",    role: "Researcher",           org: "Pew Research", note: "Quantitative methods · survey design" },
-  { from: "2017", to: "2019",    role: "Product Manager",      org: "Stitch",       note: "Civic-tech tooling for newsrooms" },
+  { from: "2024", to: "present", role: "Data Journalism Lead",  org: "Tech in Asia",    note: "YC W15 · Asian tech & VC ecosystem" },
+  { from: "2023", to: "2024",    role: "Data Journalist",       org: "VnExpress.net",   note: "Economy · demographics · technology" },
+  { from: "2021", to: "2023",    role: "Reporter",              org: "Dân Trí",         note: "Economy desk · DBiz format launch" },
+  { from: "2018", to: "2021",    role: "Reporter",              org: "VNG / Zing News", note: "Finance · banking · Financial Review" },
+  { from: "2018", to: "2018",    role: "Research Executive",    org: "Buzzmetrics",     note: "Social listening · consumer perception" },
 ];
 
 const PROJECTS = [
   {
-    id: "evictions",
+    id: "metro",
     no: "01",
-    title: "Inside America's Eviction Machine",
-    pub: "The Atlas",
-    date: "2025-03",
-    tag: "Investigation",
-    blurb: "A national audit of 4.2M eviction filings across 31 court systems, exposing landlords who file the same case dozens of times to extract late fees.",
-    metrics: [["filings", "4.2M"], ["counties", "1,840"], ["reading time", "21 min"]],
-    stack: ["Python", "DuckDB", "Observable", "QGIS"],
+    title: "Ho Chi Minh City's Metro Moment",
+    pub: "VnExpress.net",
+    date: "2024-01",
+    tag: "Urban · Data",
+    blurb: "A data-driven portrait of Metro Line 1's 17-year journey to completion — tracking construction phases, budget overruns, and what it means for 9 million daily commuters.",
+    metrics: [["years tracked", "17"], ["stations", "14"], ["km of line", "19.7"]],
+    stack: ["Datawrapper", "Flourish", "Excel", "QGIS"],
     body: [
-      "We obtained court records from 31 jurisdictions — most in PDF, some via FOIA, one mailed in on a USB stick — and resolved 4.2M filings to individual landlords using fuzzy name matching against state LLC registries.",
-      "The investigation surfaced a pattern of 'serial filing': landlords who use eviction court as a debt-collection rail, often filing and dismissing the same tenant ten or more times in a year.",
-      "Tools: pdfplumber + camelot for extraction, duckdb for joins on a single laptop, Observable Plot for the small-multiple lockup.",
+      "Metro Line 1 was more than an infrastructure story — it was a record of a city's patience. I assembled the full timeline of construction starts, delays, and funding gaps from public records, official reports, and MPI data.",
+      "Visualizing the cost escalation as a layered timeline made the story legible: a project budgeted at $1.09B that grew to nearly $2.5B across nearly two decades of construction.",
+      "The piece was recognized by VnExpress leadership at the newsroom's 23rd anniversary celebration as a standout data feature of the year.",
     ],
-    impact: ["Cited in 3 state legislative hearings", "Won SOPA 2025 — Public Service", "Methodology repo: 1.4k stars"],
+    impact: ["Recognized at VnExpress 23rd anniversary as standout data feature", "Economy section cover story", "Cited in subsequent urban planning coverage by peer outlets"],
   },
   {
-    id: "heat",
+    id: "fdi",
     no: "02",
-    title: "Fifty Summers of Heat",
-    pub: "Bloomberg Green",
-    date: "2024-08",
-    tag: "Climate · Interactive",
-    blurb: "A scrollable, fifty-year temperature record for any U.S. ZIP, built on 2.1B station-day readings.",
-    metrics: [["readings", "2.1B"], ["ZIPs", "41,683"], ["p95 latency", "120ms"]],
-    stack: ["DuckDB-WASM", "D3", "Mapbox", "Cloudflare"],
+    title: "Who's Actually Investing in Vietnam",
+    pub: "VnExpress.net",
+    date: "2024-06",
+    tag: "Economy · Investment",
+    blurb: "Mapping five years of FDI registration data to show which sectors and provinces attract capital — and where headline growth numbers obscure a more uneven picture.",
+    metrics: [["years of data", "5"], ["provinces", "63"], ["sectors mapped", "21"]],
+    stack: ["Python", "Datawrapper", "QGIS", "Excel"],
     body: [
-      "The hard part was making 50 years of NOAA hourly data feel like nothing. We pre-aggregated to ZIP × week, shipped a 38MB DuckDB-WASM file, and let the browser query it on the fly.",
-      "Heat anomalies render as a horizon chart — the same visual grammar you'd use for sleep tracking, applied to a planet warming.",
-      "I co-wrote the methodology with NOAA's climate division and open-sourced the ZIP-day aggregates under CC0.",
+      "I gathered and cross-referenced Ministry of Planning and Investment records, provincial reports, and enterprise registration data to build a picture of where foreign capital actually flows versus what the headlines claim.",
+      "A key finding: manufacturing concentration in a handful of northern industrial zones masked persistent underdevelopment in the south-central region, even as headline FDI numbers climbed year-on-year.",
+      "Recognized at VnExpress's 24th anniversary. The methodology was adopted by the Economy desk for quarterly FDI tracking going forward.",
     ],
-    impact: ["100M+ page views in launch week", "Adopted by 8 local newsrooms", "ONA finalist · Excellence in Visual Digital Storytelling"],
+    impact: ["Recognized at VnExpress 24th anniversary", "Methodology adopted for quarterly FDI tracking", "Shared widely by Vietnamese economics researchers"],
   },
   {
-    id: "money",
+    id: "dbiz",
     no: "03",
-    title: "Where the Soft Money Went",
-    pub: "ProPublica",
-    date: "2023-11",
-    tag: "Money in Politics",
-    blurb: "Tracing 501(c)(4) transfers across 600,000 IRS filings to map the 'dark money' graph for the 2022 midterms.",
-    metrics: [["filings", "612k"], ["entities", "84k"], ["edges", "311k"]],
-    stack: ["Neo4j", "Pandas", "Sigma.js", "Datasette"],
+    title: "DBiz: Reinventing the Economy Desk",
+    pub: "Dân Trí",
+    date: "2022-12",
+    tag: "Format · Innovation",
+    blurb: "Launched a new data-driven business journalism format at one of Vietnam's most established papers — a change management project as much as an editorial one.",
+    metrics: [["award", "Innovative Team 2022"], ["tools rolled out", "2"], ["desk", "Economy"]],
+    stack: ["Flourish", "Datawrapper", "Google Sheets"],
     body: [
-      "We treated every grant disbursement on a Schedule I as a directed edge between nonprofits and walked the graph backward from the seven largest political spenders.",
-      "Most of the money flowed through three 'pass-through' c4s with no public-facing programming. We named them.",
-      "Published an open Datasette so other reporters could query the same graph for their state.",
+      "Joining Dân Trí meant stepping into a newsroom with decades of entrenched habits. The Economy desk transformation was a chance to introduce data visualization as a first-class storytelling tool rather than an afterthought.",
+      "I led the evaluation and adoption of Flourish and Datawrapper, trained colleagues, and advocated for making charts and interactives central to the Economy coverage — not decorative but load-bearing.",
+      "DBiz launched as a new editorial format blending data analysis with business reporting. The Economy desk won 'Innovative Team of the Year' in 2022.",
     ],
-    impact: ["Bylines in 14 partner outlets", "IRS Form 990 schedule revisions referenced the work", "Datasette: 9k queries in first month"],
+    impact: ["Economy desk: Innovative Team of the Year 2022", "Flourish and Datawrapper adopted newsroom-wide", "DBiz format ran as a flagship series through 2023"],
   },
   {
-    id: "migration",
+    id: "asia-tech",
     no: "04",
-    title: "Atlas of Internal Migration",
-    pub: "Side project",
-    date: "2023-02",
-    tag: "Mapping · R&D",
-    blurb: "A flow map of 380M county-to-county moves from IRS SOI data, 2010 — 2022. No insights. Just a beautiful, honest picture.",
-    metrics: [["moves", "380M"], ["counties", "3,143"], ["years", "12"]],
-    stack: ["d3-geo", "GDAL", "WebGL", "Glitch"],
+    title: "Mapping the Asian Tech Ecosystem",
+    pub: "Tech in Asia",
+    date: "2025-01",
+    tag: "VC · Startups",
+    blurb: "Ongoing data journalism covering startup funding, founder trends, and the macro forces shaping venture capital across Southeast Asia and broader Asia.",
+    metrics: [["markets tracked", "12+"], ["audience", "founders + VCs"], ["cadence", "ongoing"]],
+    stack: ["Python", "SQL", "Datawrapper", "Flourish"],
     body: [
-      "A pure-craft project. I wanted to see whether the great American shuffling looked the way I'd been told it does. (Mostly it does. Sometimes it doesn't.)",
-      "Rendered with custom WebGL since the SVG approach blew up around 60k edges. Open-sourced the rendering pipeline.",
-      "Sometimes the most useful thing you can publish is a map without a thesis.",
+      "At Tech in Asia, the audience is different from a general news site — readers are operators and investors who will act on what they read. Every analysis needs to add real signal, not just repackage press releases.",
+      "I compile, clean, and analyze funding data across the region, building visualizations and data stories that help readers benchmark, compare, and understand where capital is flowing and why.",
+      "The work spans deal flow analysis, founder demographic research, sector deep-dives, and data products published as part of Tech in Asia's premium subscriber offering.",
     ],
-    impact: ["Featured in Information is Beautiful", "Used in 4 university curricula", "Github: 2.3k stars"],
+    impact: ["Data products used by subscriber VCs and founders", "Core part of Tech in Asia's premium subscriber value", "17th National Press Awards — Consolation Prize (prior work)"],
   },
 ];
 
@@ -295,7 +295,7 @@ function HeroStacked({ now }) {
         <span>v2026.05</span>
         <span>·</span>
         <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
-          <span className="pulse-dot" /> available · q3 2026
+          <span className="pulse-dot" /> open to collaborate · 2025
         </span>
       </div>
       <h1 className="reveal" data-d="1" style={{
@@ -307,8 +307,8 @@ function HeroStacked({ now }) {
         margin: "20px 0 0", fontSize: 22, color: "var(--muted)", maxWidth: 640,
         lineHeight: 1.4, letterSpacing: "-.01em",
       }}>
-        Data journalist. I report on housing, climate, and money with a
-        notebook in one hand and a query planner in the other.
+        Data journalism lead at Tech in Asia. I cover the Asian tech ecosystem
+        with data, visualizations, and stories that founders and VCs actually use.
       </p>
       <div className="mono small reveal" data-d="3" style={{
         marginTop: 44, display: "flex", gap: 32, color: "var(--muted)", flexWrap: "wrap",
@@ -328,7 +328,7 @@ function HeroSplit({ now }) {
         <div>
           <div className="mono small reveal" data-d="0" style={{ color: "var(--faint)", marginBottom: 28, display: "flex", gap: 10 }}>
             <span className="pulse-dot" />
-            <span>available · q3 2026</span>
+            <span>open to collaborate · 2025</span>
           </div>
           <h1 className="reveal" data-d="1" style={{
             margin: 0, fontFamily: "var(--font-display)",
@@ -336,7 +336,7 @@ function HeroSplit({ now }) {
             letterSpacing: "-.035em", fontWeight: 500,
           }}>
             Duc Tran<br/>
-            <span style={{ color: "var(--muted)" }}>Data journalist.</span>
+            <span style={{ color: "var(--muted)" }}>Data journalism lead.</span>
           </h1>
         </div>
         <aside className="mono small reveal" data-d="2" style={{
@@ -361,10 +361,10 @@ function HeroTerminal({ now }) {
       "$ whoami",
       "duc.tran",
       "$ cat ./bio.txt",
-      "Duc Tran — Data Journalist.",
-      "Housing · Climate · Money · Maps.",
-      "$ status --availability",
-      "● available · q3 2026 · open to brief contracts and full-time.",
+      "Duc Tran — Data Journalism Lead.",
+      "Startups · Venture Capital · Asian Tech Ecosystem.",
+      "$ status --current",
+      "● Tech in Asia (YC W15) · open to collaborate",
       "$ contact",
       `mail: ${SITE.email}    based: ${SITE.location}`,
       "$ _",
@@ -425,7 +425,7 @@ function KV({ k, v }) {
 function About() {
   return (
     <section id="about" style={{ paddingBottom: "var(--section-y)" }}>
-      <SectionHead no="01" title="About" hint="3 paragraphs · 38s read" />
+      <SectionHead no="01" title="About" hint="3 paragraphs · 40s read" />
       <div style={{
         display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60,
       }}>
@@ -433,11 +433,11 @@ function About() {
           {SITE.about.map((p, i) => <p key={i} style={{ margin: 0, textWrap: "pretty" }}>{p}</p>)}
         </div>
         <div className="mono small" style={{ color: "var(--muted)", display: "flex", flexDirection: "column", gap: "var(--row-y)" }}>
-          <AboutRow k="stack" v="Python · DuckDB · Observable · SQL · QGIS · R" />
-          <AboutRow k="writes for" v="The Atlas · Bloomberg · ProPublica" />
-          <AboutRow k="speaking" v="NICAR 2024, 2025 · SRCCON 2024" />
-          <AboutRow k="teaching" v="CUNY Newmark · Data Reporting (Spring '26)" />
-          <AboutRow k="prizes" v="SOPA · ONA finalist · IRE honorable mention" />
+          <AboutRow k="stack" v="Python · SQL · Flourish · Datawrapper · QGIS · Excel" />
+          <AboutRow k="has written for" v="Tech in Asia · VnExpress · Dân Trí · Zing News" />
+          <AboutRow k="awards" v="17th National Press Awards · Consolation Prize · Innovative Team 2022" />
+          <AboutRow k="education" v="Foreign Trade University · Int'l Business Management" />
+          <AboutRow k="association" v="ABG Alumni Association President 2025–26" />
         </div>
       </div>
     </section>
@@ -459,7 +459,7 @@ function AboutRow({ k, v }) {
 function Work() {
   return (
     <section id="work" style={{ paddingBottom: "var(--section-y)" }}>
-      <SectionHead no="02" title="Work" hint="5 positions · 9 years" />
+      <SectionHead no="02" title="Work" hint="5 positions · 7 years" />
       <ol style={{ listStyle: "none", padding: 0, margin: 0 }}>
         {WORK.map((w, i) => (
           <li key={i} style={{
@@ -620,7 +620,7 @@ function Projects({ cardStyle }) {
     const openP = PROJECTS.find(p => p.id === openId);
     return (
       <section id="projects" style={{ paddingBottom: "var(--section-y)" }}>
-        <SectionHead no="03" title="Selected work" hint={`${PROJECTS.length} pieces · 2023 — 2025`} />
+        <SectionHead no="03" title="Selected work" hint={`${PROJECTS.length} pieces · 2022 — 2025`} />
         <ProjectsGrid openId={openId} onToggle={toggle} />
         <div className="card-body-wrap" data-open={openId ? "1" : "0"} style={{ marginTop: openId ? 24 : 0 }}>
           <div>{openP && <div style={{ padding: "8px 0" }}><ProjectBody p={openP} /></div>}</div>
@@ -631,7 +631,7 @@ function Projects({ cardStyle }) {
 
   return (
     <section id="projects" style={{ paddingBottom: "var(--section-y)" }}>
-      <SectionHead no="03" title="Selected work" hint={`${PROJECTS.length} pieces · 2023 — 2025`} />
+      <SectionHead no="03" title="Selected work" hint={`${PROJECTS.length} pieces · 2022 — 2025`} />
       <div style={{ borderTop: cardStyle === "list" ? ".5px solid var(--hair)" : 0 }}>
         {PROJECTS.map((p) => (
           <ProjectCard key={p.id} p={p} open={openId === p.id} onToggle={() => toggle(p.id)} style={cardStyle} />
@@ -647,14 +647,14 @@ function Contact() {
       <SectionHead no="04" title="Contact" hint="ping anytime" />
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "start" }}>
         <p style={{ margin: 0, fontSize: 22, lineHeight: 1.4, letterSpacing: "-.01em", textWrap: "pretty" }}>
-          The fastest way to reach me is email. I read everything, reply to most things within 48 hours, and answer cold pitches that mention a dataset by name.
+          The fastest way to reach me is email. I read everything, reply to most things within 48 hours, and have a soft spot for anyone who leads with an interesting dataset.
         </p>
         <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "var(--row-y)" }}>
           <ContactRow k="email" v={SITE.email} href={`mailto:${SITE.email}`} />
           {SITE.social.map((s) => (
             <ContactRow key={s.k} k={s.k} v={s.v} href={s.href} />
           ))}
-          <ContactRow k="resume" v="duc-tran-cv-2026.pdf  ↗" href="#" />
+          <ContactRow k="resume" v="resume-linkedin.pdf  ↗" href="./resume-linkedin.pdf" />
         </ul>
       </div>
     </section>
